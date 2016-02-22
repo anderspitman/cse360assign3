@@ -34,12 +34,28 @@ public class CalculatorTest {
     public void testAdd() {
         calculator.add(1);
         assertEquals(1, calculator.getTotal());
+        calculator.add(10);
+        assertEquals(11, calculator.getTotal());
+    }
+
+    @Test
+    public void testAddNegative() {
+        calculator.add(-1);
+        assertEquals(-1, calculator.getTotal());
+        calculator.add(-10);
+        assertEquals(-11, calculator.getTotal());
     }
 
     @Test
     public void testSubtract() {
         calculator.subtract(1);
         assertEquals(-1, calculator.getTotal());
+    }
+
+    @Test
+    public void testSubtractNegative() {
+        calculator.subtract(-1);
+        assertEquals(1, calculator.getTotal());
     }
 
     @Test
@@ -85,7 +101,40 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testGetHistory() {
-        assertTrue(false);
+    public void testGetHistoryBase() {
+        assertEquals("0", calculator.getHistory());
+    }
+
+    @Test
+    public void testGetHistoryAdd() {
+        calculator.add(1);
+        assertEquals("0 + 1", calculator.getHistory());
+    }
+
+    @Test
+    public void testGetHistorySubtract() {
+        calculator.subtract(1);
+        assertEquals("0 - 1", calculator.getHistory());
+    }
+
+    @Test
+    public void testGetHistoryMultiply() {
+        calculator.multiply(1);
+        assertEquals("0 * 1", calculator.getHistory());
+    }
+
+    @Test
+    public void testGetHistoryDivide() {
+        calculator.divide(1);
+        assertEquals("0 / 1", calculator.getHistory());
+    }
+
+    @Test
+    public void testGetHistoryCombined() {
+        calculator.add(4);
+        calculator.subtract(2);
+        calculator.multiply(2);
+        calculator.add(5);
+        assertEquals("0 + 4 - 2 * 2 + 5", calculator.getHistory());
     }
 }

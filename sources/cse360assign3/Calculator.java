@@ -4,6 +4,7 @@ package cse360assign3;
 public class Calculator {
 
     private int total;
+    private String history;
     
     /** Default Constructor
      * @author Anders Pitman
@@ -11,6 +12,7 @@ public class Calculator {
      */
     public Calculator () {
         total = 0;  // not needed - included for clarity
+        history = "0";
     }
     
     /** Get the total of the calculation.
@@ -27,6 +29,7 @@ public class Calculator {
      */
     public void add (int value) {
         total += value;        
+        history += " + " + value;
     }
     
     /** Subtract integer from the current total
@@ -35,6 +38,7 @@ public class Calculator {
      */
     public void subtract (int value) {
         total -= value; 
+        history += " - " + value;
     }
     
     /** Multiply the current total by an integer
@@ -43,6 +47,7 @@ public class Calculator {
      */
     public void multiply (int value) {
         total *= value;        
+        history += " * " + value;
     }
     
     /** Divide the current total by an integer
@@ -56,6 +61,8 @@ public class Calculator {
         else {
             total /= value;
         }
+
+        history += " / " + value;
     }
     
     /** Return a string representation of the calculation history
@@ -63,6 +70,6 @@ public class Calculator {
      * @return string representation of calculation history
      */
     public String getHistory () {
-        return "";
+        return history;
     }
 }
