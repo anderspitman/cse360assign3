@@ -13,39 +13,75 @@ import java.io.*;
 
 public class CalculatorTest {
 
+    private Calculator calculator;
+
     @Before
     public void setUp() {
+        calculator = new Calculator();
     }
 
     @Test
     public void testConstructor() {
-        Calculator calculator = new Calculator();
         assertNotNull(calculator);
     }
 
     @Test
     public void testGetTotal() {
-        assertTrue(false);
+        assertEquals(0, calculator.getTotal());
     }
 
     @Test
     public void testAdd() {
-        assertTrue(false);
+        calculator.add(1);
+        assertEquals(1, calculator.getTotal());
     }
 
     @Test
     public void testSubtract() {
-        assertTrue(false);
+        calculator.subtract(1);
+        assertEquals(-1, calculator.getTotal());
     }
 
     @Test
-    public void testMultiply() {
-        assertTrue(false);
+    public void testMultiplyZero() {
+        calculator.multiply(1);
+        assertEquals(0, calculator.getTotal());
+
+        calculator.add(1);
+        calculator.multiply(0);
+        assertEquals(0, calculator.getTotal());
     }
 
     @Test
-    public void testDivide() {
-        assertTrue(false);
+    public void testMultiplyIdentity() {
+        calculator.add(1);
+        calculator.multiply(1);
+        assertEquals(1, calculator.getTotal());
+
+        calculator.add(9);
+        calculator.multiply(10);
+        assertEquals(100, calculator.getTotal());
+    }
+
+    @Test
+    public void testDivideZero() {
+        calculator.divide(0);
+        assertEquals(0, calculator.getTotal());
+
+        calculator.add(10);
+        calculator.divide(0);
+        assertEquals(0, calculator.getTotal());
+    }
+
+    @Test
+    public void testDivideIdentity() {
+        calculator.add(1);
+        calculator.divide(1);
+        assertEquals(1, calculator.getTotal());
+
+        calculator.add(99);
+        calculator.divide(10);
+        assertEquals(10, calculator.getTotal());
     }
 
     @Test

@@ -18,7 +18,7 @@ public class Calculator {
      * @return total of the calculation
      */
     public int getTotal () {
-        return 0;
+        return total;
     }
     
     /** Add an integer to the current total
@@ -26,7 +26,7 @@ public class Calculator {
      * @param value integer to add
      */
     public void add (int value) {
-        
+        total += value;        
     }
     
     /** Subtract integer from the current total
@@ -34,7 +34,7 @@ public class Calculator {
      * @param value integer to subtract
      */
     public void subtract (int value) {
-        
+        total -= value; 
     }
     
     /** Multiply the current total by an integer
@@ -42,7 +42,7 @@ public class Calculator {
      * @param value integer to multiply total by
      */
     public void multiply (int value) {
-        
+        total *= value;        
     }
     
     /** Divide the current total by an integer
@@ -50,7 +50,12 @@ public class Calculator {
      * @param value integer to divide total by
      */
     public void divide (int value) {
-        
+        if (value == 0) {
+            total = 0;
+        } 
+        else {
+            total /= value;
+        }
     }
     
     /** Return a string representation of the calculation history
